@@ -1,0 +1,1000 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ex: <http://example.com/base/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/.> .
+@prefix ssn: <http://www.w3.org/ns/ssn/.> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix bco: <http://purl.obolibrary.org/obo/bco.owl#> .
+@prefix tdwg_dwc: <http://rs.tdwg.org/dwc/terms/> .
+
+
+
+<#gbifid>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{gbifid}" ;
+        rr:class ex:GBIFID ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate https://dwc.tdwg.org/list/#dwc_scientificName ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{accspeciesname}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:hasIdentifier ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{lcvpid}" ;
+            rr:termType rr:IRI;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{ipniid}" ;
+            rr:termType rr:IRI;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{wfolink}" ;
+            rr:termType rr:IRI;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{wikidataid}" ;
+            rr:termType rr:IRI;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{gbifid}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [
+            rr:column "englishname" ;
+            rr:language "en" ;
+        ] ;
+        rr:objectMap [
+            rr:column "germanname" ;
+            rr:language "de" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate http://rs.tdwg.org/dwc/terms/scientificNameAuthorship ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{accauthorname}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate http://rs.tdwg.org/dwc/terms/kingdom ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{kingdom}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate http://rs.tdwg.org/dwc/terms/phylum ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{phylum}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate http://rs.tdwg.org/dwc/terms/order
+ ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{ordertax}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate http://rs.tdwg.org/dwc/terms/family ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{family}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate http://rs.tdwg.org/dwc/terms/genus ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{accgenus}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate http://rs.tdwg.org/dwc/terms/taxonomicStatus ;
+        rr:objectMap [
+            rr:column "status" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate skos:closeMatch ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{lcvpid}" ;
+            rr:termType rr:IRI;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{ipniid}" ;
+            rr:termType rr:IRI;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{wfolink}" ;
+            rr:termType rr:IRI;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{wikidataid}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    .
+
+<#lcvpid>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{lcvpid}" ;
+        rr:class ex:LCVPID ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+
+<#ipnidid>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{ipniid}" ;
+        rr:class ex:IPNIID ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#wfoid>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{wfolink}" ;
+        rr:class ex:WFOID ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+
+<#wikidataid>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{wikidataid}" ;
+        rr:class ex:WikidataID ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#kingdom>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{kingdom}" ;
+        rr:class ex:Kingdom ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#phylum>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{phylum}" ;
+        rr:class ex:Phylum ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#order>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{ordertax}" ;
+        rr:class ex:Order ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#family>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{family}" ;
+        rr:class ex:Family ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#genus>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{accgenus}" ;
+        rr:class ex:Genus ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#author>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_taxa_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{accauthorname}" ;
+        rr:class ex:Author ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+
+<#observationnatur>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_natur_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{gbifidobs}" ;
+        rr:class sosa:Observation ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasFeatureOfInterest ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{gbifidobs}_{gbifid}" ;
+        ] ;
+    ] ; 
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:usedProcedure ;
+        rr:objectMap [
+            rr:column "basisofrecord" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:madeBySensor ;
+        rr:objectMap [
+            rr:column "recordedby" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/Occurrence" ;
+        ] ;
+    ] ; 
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasResult ;
+        rr:objectMap [
+            rr:template "http://example.com/base/positive" ;
+        ] ;
+    ] ; 
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:resultTime ;
+        rr:objectMap [
+            rr:column "eventdate" ;
+        ] ;
+    ] ;
+
+    .
+
+<#sensor>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_natur_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{recordedby}" ;
+        rr:class sosa:Sensor ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#occurrence>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_natur_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/Occurrence" ;
+        rr:class sosa:ObservableProperty ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+<#positive>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_natur_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/positive" ;
+        rr:class sosa:Result ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+
+<#naturguckerDataset>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_natur_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/naturgucker_dataset" ;
+        rr:class sosa:ObservationCollection ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasMember ;
+        rr:objectMap [
+            rr:column "gbifidobs" ;
+        ] ;
+    ] ;
+
+    .
+
+<#featureOfInterestnatur>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_natur_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{gbifidobs}_{gbifid}" ;
+        rr:class sosa:FeatureOfInterest ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:instanceOf ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{gbifid}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/Occurrence" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:lat ;
+        rr:objectMap [
+            rr:column "decimallatitude" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:long ;
+        rr:objectMap [
+            rr:column "decimallongitude" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:alt ;
+        rr:objectMap [
+            rr:column "elevation" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:coordinateUncertainty ;
+        rr:objectMap [
+            rr:column "coordinateuncertaintyinmeters" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:elevationAccuracy ;
+        rr:objectMap [
+            rr:column "elevationaccuracy" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:tryLocality ;
+        rr:objectMap [
+            rr:column "locality" ;
+        ] ;
+    ] ;
+
+    .
+
+<#TRY_Dataset>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/TRY_DATABASE" ;
+        rr:class sosa:ObservationCollection ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasMember ;
+        rr:objectMap [
+            rr:template "http://example.com/base/TRY_{observationid}" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [
+            rr:template "http://example.com/base/TRY_2070-03-08" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#observationtry>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/TRY_{observationid}" ;
+        rr:class sosa:ObservationCollection ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [
+            rr:column "observationid" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasFeatureOfInterest ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_{gbifid}" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:usedProcedure ;
+        rr:objectMap [
+            rr:template "http://example.com/base/example_procedure" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:madeBySensor ;
+        rr:objectMap [
+            rr:template "http://example.com/base/example_sensor" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasMember ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_flowering_start__month_" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_plant_epiphytism" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_plant_woodiness" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_leaf_phenology_type" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_leaf_shape" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_seed_dry_mass" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_growthform" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#featureOfInteresttry>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{observationid}_{gbifid}" ;
+        rr:class sosa:FeatureOfInterest ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:lat ;
+        rr:objectMap [
+            rr:column "latitude_wgs84" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:long ;
+        rr:objectMap [
+            rr:column "longitude_wgs84" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate geo:alt ;
+        rr:objectMap [
+            rr:column "elevation" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:elevationAccuracy ;
+        rr:objectMap [
+            rr:column "elevationaccuracy" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:elevationAccuracy ;
+        rr:objectMap [
+            rr:column "elevationaccuracy" ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:TDWG4 ;
+        rr:objectMap [
+            rr:column "tdwg4" ;
+            rr:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate ex:instanceOf ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{gbifid}" ;
+            rr:termType rr:IRI;
+        ] ;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/try_flowering_start__month_" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/try_plant_epiphytism" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/try_plant_woodiness" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/try_leaf_phenology_type" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/try_leaf_shape" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/try_seed_dry_mass" ;
+        ] ;
+        rr:objectMap [
+            rr:template "http://example.com/base/growthform" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#try_flowering_start__month_>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/try_flowering_start__month_" ;
+        rr:class ssn:Property ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_flowering_start__month_" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#try_plant_epiphytism>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/try_plant_epiphytism" ;
+        rr:class ssn:Property ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_plant_epiphytism" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#try_plant_woodiness>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/try_plant_woodiness" ;
+        rr:class ssn:Property ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_plant_woodiness" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#try_leaf_phenology_type>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/try_leaf_phenology_type" ;
+        rr:class ssn:Property ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_leaf_phenology_type" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#try_leaf_shape>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/try_leaf_shape" ;
+        rr:class ssn:Property ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_leaf_shape" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#try_seed_dry_mass>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/try_seed_dry_mass" ;
+        rr:class ssn:Property ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_try_seed_dry_mass" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#growthform>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/growthform" ;
+        rr:class ssn:Property ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:observedProperty ;
+        rr:objectMap [
+            rr:template "http://example.com/base/{observationid}_growthform" ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#{observationid}_try_flowering_start__month_>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{observationid}_try_flowering_start__month_" ;
+        rr:class sosa:Observation ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasResult ;
+        rr:objectMap [
+            rr:column "try_flowering_start__month_" ;
+            rr:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#{observationid}_try_plant_epiphytism>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{observationid}_try_plant_epiphytism" ;
+        rr:class sosa:Observation ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasResult ;
+        rr:objectMap [
+            rr:column "try_plant_epiphytism" ;
+            rr:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#{observationid}_try_plant_woodiness>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{observationid}_try_plant_woodiness" ;
+        rr:class sosa:Observation ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasResult ;
+        rr:objectMap [
+            rr:column "try_plant_woodiness" ;
+            rr:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#{observationid}_try_leaf_phenology_type>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{observationid}_try_leaf_phenology_type" ;
+        rr:class sosa:Observation ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasResult ;
+        rr:objectMap [
+            rr:column "try_leaf_phenology_type" ;
+            rr:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#{observationid}_try_leaf_shape>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{observationid}_try_leaf_shape" ;
+        rr:class sosa:Observation ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasResult ;
+        rr:objectMap [
+            rr:column "try_leaf_shape" ;
+            rr:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#{observationid}_try_seed_dry_mass>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{observationid}_try_seed_dry_mass" ;
+        rr:class sosa:Observation ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasResult ;
+        rr:objectMap [
+            rr:column "try_seed_dry_mass" ;
+            rr:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#{observationid}_growthform>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/{observationid}_growthform" ;
+        rr:class sosa:Observation ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:hasResult ;
+        rr:objectMap [
+            rr:column "growthform" ;
+            rr:datatype xsd:string ;
+        ] ;
+    ] ;
+
+    .
+
+
+<#example_procedure>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/example_procedure" ;
+        rr:class sosa:Procedure ;
+        rr:termType rr:IRI;
+    ] ;
+
+    .
+
+
+<#example_sensor>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/example_sensor" ;
+        rr:class sosa:Sensor ;
+        rr:termType rr:IRI;
+    ] ;
+
+    rr:predicateObjectMap [
+        rr:predicate sosa:isHostedBy ;
+        rr:objectMap [
+            rr:template "http://example.com/base/example_platform"
+        ] ;
+    ] ;
+
+    .
+
+
+<#example_platform>
+    a rr:TriplesMap ;
+
+    rr:logicalTable [ rr:tableName "ontop_elev_try_august"] ;
+
+    rr:subjectMap [
+        rr:template "http://example.com/base/example_platform" ;
+        rr:class sosa:Platform ;
+        rr:termType rr:IRI;
+    ] ;
+
+    . 
+
+

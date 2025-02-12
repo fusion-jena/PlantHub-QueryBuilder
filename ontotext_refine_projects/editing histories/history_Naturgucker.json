@@ -1,0 +1,573 @@
+[
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "order",
+    "newColumnName": "orderTax",
+    "description": "Rename column order to orderTax"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "taxonKey",
+    "expression": "grel:if(isBlank(cells[\"speciesKey\"].value), cells[\"taxonKey\"].value, cells[\"speciesKey\"].value)",
+    "onError": "set-to-blank",
+    "newColumnName": "gbifidcomb",
+    "columnInsertIndex": 34,
+    "description": "Create column gbifidcomb at index 34 based on column taxonKey using expression grel:if(isBlank(cells[\"speciesKey\"].value), cells[\"taxonKey\"].value, cells[\"speciesKey\"].value)"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "gbifidcomb",
+    "index": 0,
+    "description": "Move column gbifidcomb to position 0"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "gbifID",
+    "newColumnName": "gbifidobs",
+    "description": "Rename column gbifID to gbifidobs"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "gbifidcomb",
+    "newColumnName": "gbifid",
+    "description": "Rename column gbifidcomb to gbifid"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "kingdom",
+    "description": "Remove column kingdom"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "phylum",
+    "description": "Remove column phylum"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "class",
+    "description": "Remove column class"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "orderTax",
+    "description": "Remove column orderTax"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "family",
+    "description": "Remove column family"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "genus",
+    "description": "Remove column genus"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "scientificName",
+    "description": "Remove column scientificName"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "verbatimScientificName",
+    "description": "Remove column verbatimScientificName"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "verbatimScientificNameAuthorship",
+    "description": "Remove column verbatimScientificNameAuthorship"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "species",
+    "description": "Remove column species"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "occurrenceID",
+    "description": "Remove column occurrenceID"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "lat,long",
+    "description": "Remove column lat,long"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "OpenElevationAPI URLs",
+    "description": "Remove column OpenElevationAPI URLs"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "OpenElevationAPI fetch",
+    "description": "Remove column OpenElevationAPI fetch"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "decimalLatitude",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column decimalLatitude using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "decimalLongitude",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column decimalLongitude using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "coordinateUncertaintyInMeters",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column coordinateUncertaintyInMeters using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "coordinatePrecision",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column coordinatePrecision using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "elevation",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column elevation using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "elevationAccuracy",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column elevationAccuracy using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "depth",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column depth using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "depthAccuracy",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column depthAccuracy using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "eventDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column eventDate using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "day",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column day using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "month",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column month using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "year",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column year using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "datasetKey",
+    "index": 40,
+    "description": "Move column datasetKey to position 40"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "publishingOrgKey",
+    "index": 40,
+    "description": "Move column publishingOrgKey to position 40"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "individualCount",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column individualCount using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "gbifid",
+    "expression": "grel:\"https://api.gbif.org/v1/species/match?usageKey=\"+value",
+    "onError": "set-to-blank",
+    "newColumnName": "synonymURL",
+    "columnInsertIndex": 1,
+    "description": "Create column synonymURL at index 1 based on column gbifid using expression grel:\"https://api.gbif.org/v1/species/match?usageKey=\"+value"
+  },
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "synonymURL",
+    "urlExpression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "synonymfetch",
+    "columnInsertIndex": 2,
+    "delay": 50,
+    "cacheResponses": true,
+    "httpHeadersJson": [
+      {
+        "name": "authorization",
+        "value": ""
+      },
+      {
+        "name": "user-agent",
+        "value": "OpenRefine  [1]"
+      },
+      {
+        "name": "accept",
+        "value": "*/*"
+      }
+    ],
+    "description": "Create column synonymfetch at index 2 by fetching URLs based on column synonymURL using expression grel:value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "synonymfetch",
+    "expression": "grel:value.parseJson()[\"acceptedUsageKey\"]",
+    "onError": "set-to-blank",
+    "newColumnName": "acceptedUsageKey",
+    "columnInsertIndex": 3,
+    "description": "Create column acceptedUsageKey at index 3 based on column synonymfetch using expression grel:value.parseJson()[\"acceptedUsageKey\"]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "acceptedUsageKey",
+          "expression": "isBlank(value)",
+          "columnName": "acceptedUsageKey",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "acceptedUsageKey",
+    "expression": "grel:\"https://api.gbif.org/v1/species/match?usageKey=\"+value",
+    "onError": "set-to-blank",
+    "newColumnName": "acceptedURL",
+    "columnInsertIndex": 4,
+    "description": "Create column acceptedURL at index 4 based on column acceptedUsageKey using expression grel:\"https://api.gbif.org/v1/species/match?usageKey=\"+value"
+  },
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "acceptedUsageKey",
+          "expression": "isBlank(value)",
+          "columnName": "acceptedUsageKey",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "acceptedURL",
+    "urlExpression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "acceptedFetch",
+    "columnInsertIndex": 5,
+    "delay": 50,
+    "cacheResponses": true,
+    "httpHeadersJson": [
+      {
+        "name": "authorization",
+        "value": ""
+      },
+      {
+        "name": "user-agent",
+        "value": "OpenRefine  [1]"
+      },
+      {
+        "name": "accept",
+        "value": "*/*"
+      }
+    ],
+    "description": "Create column acceptedFetch at index 5 by fetching URLs based on column acceptedURL using expression grel:value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "acceptedUsageKey",
+          "expression": "isBlank(value)",
+          "columnName": "acceptedUsageKey",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "acceptedFetch",
+    "expression": "grel:value.parseJson()[\"scientificName\"]",
+    "onError": "set-to-blank",
+    "newColumnName": "scientificName",
+    "columnInsertIndex": 6,
+    "description": "Create column scientificName at index 6 based on column acceptedFetch using expression grel:value.parseJson()[\"scientificName\"]"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "gbifid",
+    "newColumnName": "gbifidSynonyms",
+    "description": "Rename column gbifid to gbifidSynonyms"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "acceptedUsageKey",
+          "expression": "isBlank(value)",
+          "columnName": "acceptedUsageKey",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "baseColumnName": "gbifidSynonyms",
+    "expression": "grel:if(isBlank(cells[\"acceptedusagekey\"].value), cells[\"gbifidSynonyms\"].value, cells[\"acceptedusagekey\"].value)",
+    "onError": "set-to-blank",
+    "newColumnName": "gbifid",
+    "columnInsertIndex": 1,
+    "description": "Create column gbifid at index 1 based on column gbifidSynonyms using expression grel:if(isBlank(cells[\"acceptedusagekey\"].value), cells[\"gbifidSynonyms\"].value, cells[\"acceptedusagekey\"].value)"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "gbifid",
+    "index": 0,
+    "description": "Move column gbifid to position 0"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "gbifid",
+    "description": "Remove column gbifid"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "gbifidSynonyms",
+    "expression": "grel:if(isBlank(cells[\"acceptedusagekey\"].value), cells[\"gbifidSynonyms\"].value, cells[\"acceptedusagekey\"].value)",
+    "onError": "set-to-blank",
+    "newColumnName": "gbifid",
+    "columnInsertIndex": 1,
+    "description": "Create column gbifid at index 1 based on column gbifidSynonyms using expression grel:if(isBlank(cells[\"acceptedusagekey\"].value), cells[\"gbifidSynonyms\"].value, cells[\"acceptedusagekey\"].value)"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "gbifid",
+    "index": 0,
+    "description": "Move column gbifid to position 0"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "gbifid",
+    "newColumnName": "GBIF_acceptedUsageKey",
+    "description": "Rename column gbifid to GBIF_acceptedUsageKey"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "gbifidSynonyms",
+    "newColumnName": "GBIF_usageKey",
+    "description": "Rename column gbifidSynonyms to GBIF_usageKey"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "acceptedUsageKey",
+    "description": "Remove column acceptedUsageKey"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "acceptedURL",
+    "description": "Remove column acceptedURL"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "acceptedFetch",
+    "description": "Remove column acceptedFetch"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "gbifidobs",
+    "newColumnName": "GBIF_observationID",
+    "description": "Rename column gbifidobs to GBIF_observationID"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "locality",
+    "newColumnName": "GBIF_locality",
+    "description": "Rename column locality to GBIF_locality"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "scientificName",
+    "description": "Remove column scientificName"
+  }
+]

@@ -1,0 +1,59 @@
+TRY Elevation PlantHub changelist:
+
+gbifidSynonyms -> GBIF_usageKey
+gbifid -> GBIF_acceptedUsageKey
+GrowthForm -> TRY_GrowthForm
+
+remove genus
+remove scientificName
+remove AccSpeciesName
+remove AccAuthorName
+
+
+Taxa PlantHub changelist:
+
+gbifid -> GBIF_acceptedUsageKey
+wfolink -> WIKIDATA_wfolink
+ipniid -> WIKIDATA_ipniid
+wikidataid -> WIKIDATA_wikidataid
+iucnid -> IUCN_iucnid
+iucnredlistcategory -> IUCN_iucnredlistcategory
+image -> WIKIDATA_image
+canonicalname -> GBIF_canonicalname
+scientificname -> GBIF_scientificname
+germanname -> GBIF_germanname
+englishname -> GBIF_englishname
+rank -> GBIF_rank
+kingdom -> GBIF_kingdom
+phylum -> GBIF_phylum
+class -> GBIF_class
+ordertax -> GBIF_order
+family -> GBIF_family
+genus -> GBIF_genus
+kingdomKey -> GBIF_kingdomKey
+phylumKey -> GBIF_phylumKey
+classKey -> GBIF_classKey 
+orderKey -> GBIF_orderKey
+familyKey -> GBIF_familyKey
+genusKey -> GBIF_genusKey
+synonym -> GBIF_synonym
+
+clean 40 stray synonym entries -> 33 cleaned, 7 removed
+
+
+Naturgucker PlantHub changelist:
+
+gbifid -> GBIF_acceptedUsageKey
+gbifidSynonyms -> GBIF_usageKey
+gbifidobs -> GBIF_observationID
+locality -> GBIF_locality
+
+remove acceptedUsageKey
+remove acceptedURL
+remove acceptedFetch
+remove scientificName
+
+
+
+
+

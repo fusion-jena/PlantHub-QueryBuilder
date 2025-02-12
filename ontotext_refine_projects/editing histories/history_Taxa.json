@@ -1,0 +1,771 @@
+[
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "canonicalName",
+    "expression": "join ([coalesce(cells['canonicalName'].value,''),coalesce(cells['canonicalname'].value,'')],'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column canonicalName using expression join ([coalesce(cells['canonicalName'].value,''),coalesce(cells['canonicalname'].value,'')],'')"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "canonicalname",
+    "description": "Remove column canonicalname"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "scientificName",
+    "expression": "join ([coalesce(cells['scientificName'].value,''),coalesce(cells['scientificname'].value,'')],'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column scientificName using expression join ([coalesce(cells['scientificName'].value,''),coalesce(cells['scientificname'].value,'')],'')"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "scientificname",
+    "description": "Remove column scientificname"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "rank",
+    "index": 6,
+    "description": "Move column rank to position 6"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "File",
+    "description": "Remove column File"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "canonicalName",
+    "index": 6,
+    "description": "Move column canonicalName to position 6"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "canonicalName",
+    "index": 5,
+    "description": "Move column canonicalName to position 5"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "german name",
+    "index": 5,
+    "description": "Move column german name to position 5"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "scientificName",
+    "index": 7,
+    "description": "Move column scientificName to position 7"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "scientificName",
+    "index": 6,
+    "description": "Move column scientificName to position 6"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "scientificName",
+    "index": 5,
+    "description": "Move column scientificName to position 5"
+  },
+  {
+    "op": "core/column-move",
+    "columnName": "english name",
+    "index": 7,
+    "description": "Move column english name to position 7"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "wikidata id",
+    "newColumnName": "wikidataid",
+    "description": "Rename column wikidata id to wikidataid"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "wfo_id",
+    "newColumnName": "wfolink",
+    "description": "Rename column wfo_id to wfolink"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "ipni id",
+    "newColumnName": "ipniid",
+    "description": "Rename column ipni id to ipniid"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "german name",
+    "newColumnName": "germanname",
+    "description": "Rename column german name to germanname"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "english name",
+    "newColumnName": "englishname",
+    "description": "Rename column english name to englishname"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "scientificName",
+    "newColumnName": "scientificname",
+    "description": "Rename column scientificName to scientificname"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "canonicalName",
+    "newColumnName": "canonicalname",
+    "description": "Rename column canonicalName to canonicalname"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "gbifid",
+    "expression": "grel:\"https://api.gbif.org/v1/species/\"+value+\"/iucnRedListCategory\"",
+    "onError": "set-to-blank",
+    "newColumnName": "url red list",
+    "columnInsertIndex": 1,
+    "description": "Create column url red list at index 1 based on column gbifid using expression grel:\"https://api.gbif.org/v1/species/\"+value+\"/iucnRedListCategory\""
+  },
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "url red list",
+    "urlExpression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "fetch",
+    "columnInsertIndex": 2,
+    "delay": 50,
+    "cacheResponses": true,
+    "httpHeadersJson": [
+      {
+        "name": "authorization",
+        "value": ""
+      },
+      {
+        "name": "user-agent",
+        "value": "OpenRefine  [1]"
+      },
+      {
+        "name": "accept",
+        "value": "*/*"
+      }
+    ],
+    "description": "Create column fetch at index 2 by fetching URLs based on column url red list using expression grel:value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "fetch",
+    "expression": "grel:value.parseJson()[\"category\"]",
+    "onError": "set-to-blank",
+    "newColumnName": "IUCN Red List Category",
+    "columnInsertIndex": 3,
+    "description": "Create column IUCN Red List Category at index 3 based on column fetch using expression grel:value.parseJson()[\"category\"]"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "fetch",
+    "expression": "grel:value.parseJson()['iucnTaxonID']",
+    "onError": "set-to-blank",
+    "newColumnName": "iucnid",
+    "columnInsertIndex": 3,
+    "description": "Create column iucnid at index 3 based on column fetch using expression grel:value.parseJson()['iucnTaxonID']"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "IUCN Red List Category",
+    "newColumnName": "iucnredlistcategory",
+    "description": "Rename column IUCN Red List Category to iucnredlistcategory"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "wfolink",
+          "expression": "isBlank(value)",
+          "columnName": "wfolink",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "wfolink",
+          "expression": "value.length()",
+          "columnName": "wfolink",
+          "from": 40,
+          "to": 170,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "wfolink",
+    "expression": "value.replace(/[\\p{Zs}\\s]+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column wfolink using expression value.replace(/[\\p{Zs}\\s]+/,' ')"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "wfolink",
+          "expression": "isBlank(value)",
+          "columnName": "wfolink",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "range",
+          "name": "wfolink",
+          "expression": "value.length()",
+          "columnName": "wfolink",
+          "from": 40,
+          "to": 170,
+          "selectNumeric": true,
+          "selectNonNumeric": true,
+          "selectBlank": true,
+          "selectError": true
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "wfolink",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "<?xml version='1.0' encoding='UTF-8'?> <sparql xmlns='http://www.w3.org/2005/sparql-results#'> <head> <variable name='o'/> </head> <results> </results> </sparql> "
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": ""
+      }
+    ],
+    "description": "Mass edit cells in column wfolink"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "wikidataid",
+    "expression": "grel:\"https://query.wikidata.org/sparql?query=SELECT%20%3Fplant%20%3Fimage%0AWHERE%20%7B%0A%20%20%20%20%20%20%20wd%3A\"+value+\"%20wdt%3AP18%20%3Fimage%20.%0ASERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0Alimit%20100\"",
+    "onError": "set-to-blank",
+    "newColumnName": "image query",
+    "columnInsertIndex": 6,
+    "description": "Create column image query at index 6 based on column wikidataid using expression grel:\"https://query.wikidata.org/sparql?query=SELECT%20%3Fplant%20%3Fimage%0AWHERE%20%7B%0A%20%20%20%20%20%20%20wd%3A\"+value+\"%20wdt%3AP18%20%3Fimage%20.%0ASERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0Alimit%20100\""
+  },
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "image query",
+    "urlExpression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "image fetch",
+    "columnInsertIndex": 7,
+    "delay": 50,
+    "cacheResponses": true,
+    "httpHeadersJson": [
+      {
+        "name": "authorization",
+        "value": ""
+      },
+      {
+        "name": "user-agent",
+        "value": "OpenRefine  [1]"
+      },
+      {
+        "name": "accept",
+        "value": "*/*"
+      }
+    ],
+    "description": "Create column image fetch at index 7 by fetching URLs based on column image query using expression grel:value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "image fetch",
+    "expression": "value.trim()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column image fetch using expression value.trim()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "image fetch",
+    "expression": "value.replace(/[\\p{Zs}\\s]+/,' ')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column image fetch using expression value.replace(/[\\p{Zs}\\s]+/,' ')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "image fetch",
+    "expression": "value.replace(\"<?xml version=\\'1.0\\' encoding=\\'UTF-8\\'?> <sparql xmlns=\\'http://www.w3.org/2005/sparql-results#\\'> <head> <variable name=\\'plant\\'/> <variable name=\\'image\\'/> </head> <results> </results> </sparql>\",\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column image fetch using expression value.replace(\"<?xml version=\\'1.0\\' encoding=\\'UTF-8\\'?> <sparql xmlns=\\'http://www.w3.org/2005/sparql-results#\\'> <head> <variable name=\\'plant\\'/> <variable name=\\'image\\'/> </head> <results> </results> </sparql>\",\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "image fetch",
+    "expression": "value.replace(\"<?xml version=\\'1.0\\' encoding=\\'UTF-8\\'?> <sparql xmlns=\\'http://www.w3.org/2005/sparql-results#\\'> <head> <variable name=\\'plant\\'/> <variable name=\\'image\\'/> </head> <results> <result> <binding name=\\'image\\'> <uri>\",\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column image fetch using expression value.replace(\"<?xml version=\\'1.0\\' encoding=\\'UTF-8\\'?> <sparql xmlns=\\'http://www.w3.org/2005/sparql-results#\\'> <head> <variable name=\\'plant\\'/> <variable name=\\'image\\'/> </head> <results> <result> <binding name=\\'image\\'> <uri>\",\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "image fetch",
+    "expression": "value.replace(\"</uri> </binding> </result> </results> </sparql>\",\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column image fetch using expression value.replace(\"</uri> </binding> </result> </results> </sparql>\",\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "image fetch 1",
+          "expression": "isBlank(value)",
+          "columnName": "image fetch 1",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        },
+        {
+          "type": "list",
+          "name": "image fetch",
+          "expression": "isBlank(value)",
+          "columnName": "image fetch",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "image fetch",
+    "expression": "grel:value.split(\"</uri> </binding> </result> <result> <binding name='image'> <uri>\")[0]",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column image fetch using expression grel:value.split(\"</uri> </binding> </result> <result> <binding name='image'> <uri>\")[0]"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "image query",
+    "newColumnName": "image",
+    "description": "Rename column image query to image"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "image",
+    "newColumnName": "imageURL",
+    "description": "Rename column image to imageURL"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "image fetch",
+    "newColumnName": "image",
+    "description": "Rename column image fetch to image"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "gbifid",
+    "newColumnName": "GBIF_acceptedUsageKey",
+    "description": "Rename column gbifid to GBIF_acceptedUsageKey"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "image",
+    "newColumnName": "WIKIDATA_image",
+    "description": "Rename column image to WIKIDATA_image"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "canonicalname",
+    "newColumnName": "GBIF_canonicalname",
+    "description": "Rename column canonicalname to GBIF_canonicalname"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "scientificname",
+    "newColumnName": "GBIF_scientificname",
+    "description": "Rename column scientificname to GBIF_scientificname"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "germanname",
+    "newColumnName": "GBIF_germanname",
+    "description": "Rename column germanname to GBIF_germanname"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "englishname",
+    "newColumnName": "GBIF_englishname",
+    "description": "Rename column englishname to GBIF_englishname"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "wfolink",
+    "newColumnName": "WIKIDATA_wfolink",
+    "description": "Rename column wfolink to WIKIDATA_wfolink"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "ipniid",
+    "newColumnName": "WIKIDATA_ipniid",
+    "description": "Rename column ipniid to WIKIDATA_ipniid"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "wikidataid",
+    "newColumnName": "WIKIDATA_wikidataid",
+    "description": "Rename column wikidataid to WIKIDATA_wikidataid"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "iucnid",
+    "newColumnName": "IUCN_iucnid",
+    "description": "Rename column iucnid to IUCN_iucnid"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "iucnredlistcategory",
+    "newColumnName": "IUCN_iucnredlistcategory",
+    "description": "Rename column iucnredlistcategory to IUCN_iucnredlistcategory"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "synonym",
+          "expression": "value",
+          "columnName": "synonym",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "true",
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "GBIF_acceptedUsageKey",
+    "expression": "grel:\"\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column GBIF_acceptedUsageKey using expression grel:\"\""
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "synonym",
+          "expression": "value",
+          "columnName": "synonym",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "true",
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "GBIF_acceptedUsageKey",
+    "expression": "join ([coalesce(cells['GBIF_acceptedUsageKey'].value,''),coalesce(cells['genusKey'].value,'')],'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column GBIF_acceptedUsageKey using expression join ([coalesce(cells['GBIF_acceptedUsageKey'].value,''),coalesce(cells['genusKey'].value,'')],'')"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "synonym",
+          "expression": "value",
+          "columnName": "synonym",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "true",
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "synonym",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "true"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "false"
+      }
+    ],
+    "description": "Mass edit cells in column synonym"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Flagged Rows",
+          "expression": "row.flagged",
+          "columnName": "",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "rank",
+    "newColumnName": "GBIF_rank",
+    "description": "Rename column rank to GBIF_rank"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "kingdom",
+    "newColumnName": "GBIF_kingdom",
+    "description": "Rename column kingdom to GBIF_kingdom"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "phylum",
+    "newColumnName": "GBIF_phylum",
+    "description": "Rename column phylum to GBIF_phylum"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "class",
+    "newColumnName": "GBIF_class",
+    "description": "Rename column class to GBIF_class"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "ordertax",
+    "newColumnName": "GBIF_ordertax",
+    "description": "Rename column ordertax to GBIF_ordertax"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "family",
+    "newColumnName": "GBIF_family",
+    "description": "Rename column family to GBIF_family"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "genus",
+    "newColumnName": "GBIF_genus",
+    "description": "Rename column genus to GBIF_genus"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "kingdomKey",
+    "newColumnName": "GBIF_kingdomKey",
+    "description": "Rename column kingdomKey to GBIF_kingdomKey"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "phylumKey",
+    "newColumnName": "GBIF_phylumKey",
+    "description": "Rename column phylumKey to GBIF_phylumKey"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "classKey",
+    "newColumnName": "GBIF_classKey",
+    "description": "Rename column classKey to GBIF_classKey"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "orderKey",
+    "newColumnName": "GBIF_orderKey",
+    "description": "Rename column orderKey to GBIF_orderKey"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "familyKey",
+    "newColumnName": "GBIF_familyKey",
+    "description": "Rename column familyKey to GBIF_familyKey"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "genusKey",
+    "newColumnName": "GBIF_genusKey",
+    "description": "Rename column genusKey to GBIF_genusKey"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "synonym",
+    "newColumnName": "GBIF_synonym",
+    "description": "Rename column synonym to GBIF_synonym"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "GBIF_ordertax",
+    "newColumnName": "GBIF_order",
+    "description": "Rename column GBIF_ordertax to GBIF_order"
+  }
+]
