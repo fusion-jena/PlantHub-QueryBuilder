@@ -14,6 +14,8 @@ The data shared in this repository contains 100K entries from TRY, the plant tra
 
 In an update, we include a further subset of the naturgucker.de dataset, that contains plant occurrences in Germany from 01.01.2024-07.02.2025 (https://doi.org/10.15468/dl.x5cexq).
 
-Both of these sources are licensed under CC BY 4.0
-
 We enrich these datasets with additional information from Wikidata, the GBIF API, the IUCN API, and the OpenElevationAPI.
+
+# License
+
+All sources are licensed under CC BY 4.0
