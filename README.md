@@ -8,10 +8,13 @@ Contained in this repository are:
 - (2) All [Ontotext Refine](https://www.ontotext.com/products/ontotext-refine/) projects and editing histories to reproduce the final datasets.
 - (3) All SQL exports to create a database from the datasets.
 - (4) All [R2RML](https://github.com/chrdebru/r2rml) mappings to create an RDF graph from the database.
+- (5) The finished knowledge graph can be found under'./graph/output.zip'.
 
 # How to use
 
 For a more detailed description of the workflow, please refer to the publication "Semantic technologies for interdisciplinary research: A case study on improving data synthesis and integration in the biodiversity domain" at BTW2025.
+
+The final knowledge graph is uploaded at './graph/output.zip'. There you can find a .ttl file that can be uploaded to a triplestore of your choice.
 
 Visitors of this repository can reproduce and use the contained data and mappings in a variety of ways. The simplest way of arriving at a finished RDF graph is by loading the SQL exports into a database and consequently executing the R2RML mappings on that database. This results in a .ttl file that can be uploaded to a triplestore of your choice.
 
