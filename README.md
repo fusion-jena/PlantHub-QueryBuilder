@@ -19,4 +19,4 @@ We enrich these datasets with additional information from [Wikidata](https://que
 
 # License
 
-All sources are licensed under CC BY 4.0
+All sources are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
