@@ -3,10 +3,11 @@
 In this repository, you can find all information to reproduce the knowledge graph built for the PlantHub QueryBuilder. 
 
 Contained in this repository are:
-(1) All datasets used to build the graph. 
-(2) All Ontotext Refine projects and editing histories to reproduce the final datasets.
-(3) All SQL exports to create a database from the datasets.
-(4) All R2RML mappings to create an RDF graph from the database.
+
+- (1) All datasets used to build the graph. 
+- (2) All Ontotext Refine projects and editing histories to reproduce the final datasets.
+- (3) All SQL exports to create a database from the datasets.
+- (4) All R2RML mappings to create an RDF graph from the database.
 
 # Data
 
