@@ -11,11 +11,11 @@ Contained in this repository are:
 
 # Data
 
-The data shared in this repository contains 100K entries from TRY, the plant trait database, and the first 100K entries from the naturgucker.de dataset hosted on GBIF (https://doi.org/10.15468/dl.e6ry9b).
+The data shared in this repository contains 100K entries from [TRY](https://www.try-db.org/TryWeb/Home.php), the plant trait database, and the first 100K entries from the [naturgucker.de dataset hosted on GBIF](https://www.gbif.org/dataset/6ac3f774-d9fb-4796-b3e9-92bf6c81c084) (https://doi.org/10.15468/dl.e6ry9b).
 
 In an update, we include a further subset of the naturgucker.de dataset, that contains plant occurrences in Germany from 01.01.2024-07.02.2025 (https://doi.org/10.15468/dl.x5cexq).
 
-We enrich these datasets with additional information from Wikidata, the GBIF API, the IUCN API, and the OpenElevationAPI.
+We enrich these datasets with additional information from [Wikidata](https://query.wikidata.org/), the [GBIF API](https://techdocs.gbif.org/en/openapi/v1/species), the [IUCN API](https://apiv3.iucnredlist.org/api/v3/docs), and the [OpenElevationAPI](https://open-elevation.com/).
 
 # License
 
