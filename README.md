@@ -15,7 +15,7 @@ For a more detailed description of the workflow, please refer to the publication
 
 Visitors of this repository can reproduce and use the contained data and mappings in a variety of ways. The simplest way of arriving at a finished RDF graph is by loading the SQL exports into a database and consequently executing the R2RML mappings on that database. This results in a .ttl file that can be uploaded to a triplestore of your choice.
 
-The SQL statements are exported from Ontotext Refine projects containing the datasets uploaded to this repository. We publish the finished datasets and also provide the project files that take the raw data to their processed state, such that all operations on the data can be viewed. We also publish the operation histories exported from the project files.
+The SQL statements are exported from Ontotext Refine projects containing the datasets uploaded to this repository. We publish the finished datasets and provide the project files that take the raw data to their processed state, such that all operations on the data can be viewed. We also publish the operation histories exported from the project files.
 
 # Data
 
